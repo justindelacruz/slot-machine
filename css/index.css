@@ -1,0 +1,48 @@
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script);
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+/* line 5, ../sass/index.scss */
+body {
+  font-family: Lato, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  background: url(../img/wood_pattern.png) #fafafa;
+}
+@media (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3 / 2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+  /* line 5, ../sass/index.scss */
+  body {
+    background-image: url("../img/wood_pattern_@2X.png");
+    background-size: 203px 317px;
+  }
+}
+
+/* line 13, ../sass/index.scss */
+.header {
+  text-align: center;
+}
+/* line 16, ../sass/index.scss */
+.header h1 {
+  font-family: 'Dancing Script', cursive;
+  line-height: 4rem;
+}
+/* line 20, ../sass/index.scss */
+.header h1 span {
+  display: block;
+}
+/* line 23, ../sass/index.scss */
+.header h1 span:first-child {
+  font-size: 2.5rem;
+}
+/* line 27, ../sass/index.scss */
+.header h1 span:last-child {
+  font-size: 4rem;
+}
+/* line 33, ../sass/index.scss */
+.header h2 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+/* line 39, ../sass/index.scss */
+.container {
+  margin: 100px 0;
+}

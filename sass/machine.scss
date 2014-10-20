@@ -1,0 +1,233 @@
+@import "compass/css3/images";
+@import "compass/css3/user-interface";
+@import "compass/css3/transition";
+@import "compass/css3/animation";
+@import "compass/css3/transform";
+@import "compass/utilities/sprites";
+@import "slot-icons/*.png";
+@include all-slot-icons-sprites;
+
+$machine-width-small: 300px;
+$machine-width-medium: 600px;
+$machine-width-large: 650px;
+$machine-height: 300px;
+
+.machine-reels {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: $machine-width-small;
+	height: $machine-height;
+	border: 1px solid rgb(174,173,171);
+	box-sizing: content-box;
+	@include transition(100ms border linear);
+	
+	.machine-results {
+		
+	}
+	
+	.machine-reel {
+		position: absolute;
+		display: inline-block;
+		top: 0;
+		bottom: 0;
+		background-color: #fff;
+		border: 1px solid rgb(153,148,144);
+		border-top: none;
+		border-bottom: none;
+		box-sizing: content-box;
+		width: 33.33333%;
+		
+		&:before, &:after {
+			position: absolute;
+			content: "";
+			z-index: 2;
+			left: 0;
+			width: 100%;
+		}
+		
+		&:before {
+			top: 0;
+			bottom: 66.66666%;
+			@include background-image(linear-gradient(
+				rgba(0,0,0,0.50) 0%,
+				rgba(0,0,0,0.35) 20%,
+				rgba(255,255,255,0) 100%)
+			);
+		}
+		
+		&:after {
+			top: 66.66666%;
+			bottom: 0;
+			@include background-image(linear-gradient(
+				rgba(255,255,255,0) 0%,
+				rgba(0,0,0,0.35) 80%,
+				rgba(0,0,0,0.50) 100%)
+			);
+		}
+		
+		&:nth-child(1) {
+			left: 0;
+		}
+
+		&:nth-child(2) {
+			left: 33.33333%;
+		}
+		
+		&:nth-child(3) {
+			left: 66.66666%;
+		}
+		
+		li {
+			height: $machine-height / 3;
+			text-align: center;
+			
+			span {
+				display: inline-block;
+				height: $machine-height;
+				width: 100px;
+			}
+		}
+			
+		.active & ul {
+			@include animation-duration(300ms);
+			@include animation-timing-function(linear);
+			@include animation-fill-mode(forwards);
+			@include animation-name(spin-reel-active);
+			@include animation-iteration-count(infinite);
+		}
+		
+		ul.done-0,
+		ul.done-1,
+		ul.done-2 {
+			@include animation-duration(1000ms);
+			@include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+			@include animation-fill-mode(forwards);
+			@include animation-iteration-count(1);;
+		}
+		
+		ul.done-0 {
+			@include animation-name(spin-reel-0);
+		}
+		
+		ul.done-1 {
+			@include animation-name(spin-reel-1);	
+		}
+		
+		ul.done-2 {
+			@include animation-name(spin-reel-2);
+		}
+	}
+}
+
+.slot-machine {
+	&.winner {
+		.machine-reels {
+			border: 5px solid rgb(118, 183, 0);
+		}
+	}
+	
+	&.notWinner {
+		.machine-reels {
+			border: 5px solid rgb(183, 0, 30);
+		}
+	}
+}
+
+.machine-play-button {
+	width: $machine-width-small;
+	background-color: rgb(118, 183, 0);
+	padding: 15px 0;
+	margin: 10px 0;
+	border: none;
+	color: #fff;
+	font-size: 1rem;
+	@include transition(100ms all linear);
+	@include user-select(none);
+	outline: none;
+	
+	&:hover {
+		background-color: rgb(104, 153, 16);
+	}
+	
+	.active & {
+		background-color: rgb(100,100,100);
+		color: #000;
+	}
+}
+
+@media only screen and (min-width: 40.063em) {
+	.machine-reels {
+		width: $machine-width-medium;
+	}
+	
+	.machine-play-button {
+		width: $machine-width-medium;
+		padding: 10px 0;
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (min-width: 64.063em) {
+	.machine-reels {
+		width: $machine-width-large;
+	}
+	
+	.machine-play-button {
+		width: 100%;
+		padding: 15px 0;
+		font-size: 2rem;
+	}
+}
+
+@include keyframes(spin-reel-active) {
+	0% {
+		@include transform(translateY(0%));
+	}
+	
+	100% {
+		@include transform(translateY(-66.666666%));
+	}
+}
+
+@include keyframes(spin-reel-0) {
+	0% {
+		@include transform(translateY(0%));
+	}
+
+	90% {
+		@include transform(translateY(-34%));;
+	}
+	
+	100% {
+		@include transform(translateY(-33.333333%));
+	}
+}
+
+@include keyframes(spin-reel-1) {
+	0% {
+		@include transform(translateY(0%));
+	}
+	
+	90% {
+		@include transform(translateY(-12%));
+	}
+	
+	100% {
+		@include transform(translateY(-11.1111111%));
+	}
+}
+
+@include keyframes(spin-reel-2) {
+	0% {
+		@include transform(translateY(0%));
+	}
+	
+	90% {
+		@include transform(translateY(-23%));
+	}
+	
+	100% {
+		@include transform(translateY(-22.2222222%));
+	}
+}
