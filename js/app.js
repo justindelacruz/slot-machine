@@ -12,8 +12,8 @@
 		var options = {
 				numReels: 3,
 				numPrizes: 3,
-				numSpins: 4, 
-				spinDuration: 300,
+				numSpins: 4,
+				spinDuration: 200,
 				minimumLastSpinDuration: 1000,
 				additionalLastSpinDuration: 500,
 				classes: {

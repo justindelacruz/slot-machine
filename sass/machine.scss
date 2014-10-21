@@ -124,13 +124,13 @@ $machine-height: 300px;
 			
 			span {
 				display: inline-block;
-				height: $machine-height;
+				height: $machine-height / 3;
 				width: 100px;
 			}
 		}
 			
 		.active & ul {
-			@include animation-duration(300ms);
+			@include animation-duration(200ms);
 			@include animation-timing-function(linear);
 			@include animation-fill-mode(forwards);
 			@include animation-name(spin-reel-active);
@@ -234,7 +234,7 @@ $machine-height: 300px;
 	}
 	
 	100% {
-		@include transform(translateY(-66.666666%));
+		@include transform(translateY(-50%));
 	}
 }
 
@@ -244,11 +244,11 @@ $machine-height: 300px;
 	}
 
 	90% {
-		@include transform(translateY(-23%));
+		@include transform(translateY(-34%));
 	}
 	
 	100% {
-		@include transform(translateY(-22.2222222%)); // =2/9
+		@include transform(translateY(-33.33333%)); // =2/6
 	}
 }
 
@@ -258,11 +258,11 @@ $machine-height: 300px;
 	}
 
 	90% {
-		@include transform(translateY(-34%));
+		@include transform(translateY(-51%));
 	}
 	
 	100% {
-		@include transform(translateY(-33.333333%)); // =3/9
+		@include transform(translateY(-50%)); // =3/6
 	}
 }
 
@@ -272,10 +272,10 @@ $machine-height: 300px;
 	}
 	
 	90% {
-		@include transform(translateY(-12%));
+		@include transform(translateY(-17%));
 	}
 	
 	100% {
-		@include transform(translateY(-11.1111111%)); // =1/9
+		@include transform(translateY(-16.66666%)); // =1/6
 	}
 }
