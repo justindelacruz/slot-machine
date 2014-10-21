@@ -23,7 +23,47 @@ $machine-height: 300px;
 	@include transition(100ms border linear);
 	
 	.machine-results {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		z-index: 3;
+		opacity: 0;
+		font-size: 1.5rem;
+		color: #fff;
+		text-align: center;
 		
+		.machine-winner &, .machine-not-winner & {
+			opacity: 1;
+		}
+		
+		.machine-winner & {
+			background-color: rgba(118, 183, 0, 0.5);	
+		}
+		
+		.machine-not-winner & {
+			background-color: rgba(183, 0, 30, 0.5)
+		}
+		
+		& > div {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			visibility: hidden;
+		}
+		
+		.machine-winner-0 & .machine-results-0, 
+		.machine-winner-1 & .machine-results-1,
+		.machine-winner-2 & .machine-results-2, 
+		.machine-not-winner & .machine-results-not-winner {
+			visibility: visible;
+		}
+		
+		@include transition(300ms all linear);
 	}
 	
 	.machine-reel {
@@ -103,7 +143,7 @@ $machine-height: 300px;
 			@include animation-duration(1000ms);
 			@include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
 			@include animation-fill-mode(forwards);
-			@include animation-iteration-count(1);;
+			@include animation-iteration-count(1);
 		}
 		
 		ul.done-0 {
@@ -121,15 +161,15 @@ $machine-height: 300px;
 }
 
 .slot-machine {
-	&.winner {
+	&.machine-winner {
 		.machine-reels {
-			border: 5px solid rgb(118, 183, 0);
+			border: 1px solid rgb(118, 183, 0);
 		}
 	}
 	
-	&.notWinner {
+	&.machine-not-winner {
 		.machine-reels {
-			border: 5px solid rgb(183, 0, 30);
+			border: 1px solid rgb(183, 0, 30);
 		}
 	}
 }
@@ -159,6 +199,10 @@ $machine-height: 300px;
 @media only screen and (min-width: 40.063em) {
 	.machine-reels {
 		width: $machine-width-medium;
+		
+		.machine-results {
+			font-size: 2.5rem;	
+		}
 	}
 	
 	.machine-play-button {
@@ -171,6 +215,10 @@ $machine-height: 300px;
 @media only screen and (min-width: 64.063em) {
 	.machine-reels {
 		width: $machine-width-large;
+		
+		.machine-results {
+			font-size: 3rem;	
+		}
 	}
 	
 	.machine-play-button {
@@ -196,11 +244,11 @@ $machine-height: 300px;
 	}
 
 	90% {
-		@include transform(translateY(-34%));;
+		@include transform(translateY(-23%));
 	}
 	
 	100% {
-		@include transform(translateY(-33.333333%));
+		@include transform(translateY(-22.2222222%)); // =2/9
 	}
 }
 
@@ -208,13 +256,13 @@ $machine-height: 300px;
 	0% {
 		@include transform(translateY(0%));
 	}
-	
+
 	90% {
-		@include transform(translateY(-12%));
+		@include transform(translateY(-34%));
 	}
 	
 	100% {
-		@include transform(translateY(-11.1111111%));
+		@include transform(translateY(-33.333333%)); // =3/9
 	}
 }
 
@@ -224,10 +272,10 @@ $machine-height: 300px;
 	}
 	
 	90% {
-		@include transform(translateY(-23%));
+		@include transform(translateY(-12%));
 	}
 	
 	100% {
-		@include transform(translateY(-22.2222222%));
+		@include transform(translateY(-11.1111111%)); // =1/9
 	}
 }
