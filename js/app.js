@@ -2,7 +2,7 @@
     /**
      * Espresso Bar Slot Machine
      * 
-     * Usage: $(selector).SlotMachine(options)
+     * Usage: $(selector).slotMachine(options)
      */
     var SlotMachine = function(el, o) {
         /**
